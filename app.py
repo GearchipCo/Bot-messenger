@@ -1,73 +1,59 @@
-import os
+from flask import Flask, request, jsonify
 import requests
-from flask import Flask, request
+import os
 from openai import OpenAI
 
 app = Flask(__name__)
 
-VERIFY_TOKEN = "3431172002"  # usa el que pusiste en Meta
-
-# Cargar claves desde las variables del servidor
+VERIFY_TOKEN = os.getenv("VERIFY_TOKEN")
 PAGE_ACCESS_TOKEN = os.getenv("PAGE_ACCESS_TOKEN")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 client = OpenAI(api_key=OPENAI_API_KEY)
 
 def send_message(recipient_id, text):
-    url = "https://graph.facebook.com/v17.0/me/messages"
-    params = {"access_token": PAGE_ACCESS_TOKEN}
+    url = f"https://graph.facebook.com/v18.0/me/messages?access_token={PAGE_ACCESS_TOKEN}"
     data = {
         "recipient": {"id": recipient_id},
         "message": {"text": text}
     }
-    requests.post(url, params=params, json=data)
+    response = requests.post(url, json=data)
+    print("FB response:", response.text)
 
+@app.route("/", methods=["GET"])
+def home():
+    return "Bot funcionando", 200
 
-def ai_response(user_message):
-    try:
-        response = client.chat.completions.create(
-            model="gpt-4o-mini",
-            messages=[
-                {"role": "system", "content": "Eres un asistente útil y amable."},
-                {"role": "user", "content": user_message}
-            ],
-            max_tokens=300
-        )
-        return response.choices[0].message.content
-    except Exception as e:
-        print("Error con OpenAI:", e)
-        return "Hubo un error procesando tu mensaje."
-
-
-@app.route('/webhook', methods=['GET'])
+@app.route("/webhook", methods=["GET"])
 def verify():
-    token = request.args.get('hub.verify_token')
-    challenge = request.args.get('hub.challenge')
-    if token == VERIFY_TOKEN:
-        return challenge
-    return "Token inválido", 403
+    if request.args.get("hub.verify_token") == VERIFY_TOKEN:
+        return request.args.get("hub.challenge")
+    return "Error de verificación", 403
 
-
-@app.route('/webhook', methods=['POST'])
+@app.route("/webhook", methods=["POST"])
 def webhook():
-    data = request.get_json()
+    data = request.json
+    print("Mensaje recibido:", data)
 
     if "entry" in data:
         for entry in data["entry"]:
-            for event in entry.get("messaging", []):
-                sender = event["sender"]["id"]
+            messaging = entry.get("messaging")
+            if messaging:
+                for message in messaging:
+                    sender_id = message["sender"]["id"]
+                    if "text" in message.get("message", {}):
+                        text = message["message"]["text"]
 
-                if "message" in event and "text" in event["message"]:
-                    text = event["message"]["text"]
+                        # Respuesta con OpenAI
+                        completion = client.chat.completions.create(
+                            model="gpt-4o-mini",
+                            messages=[{"role": "user", "content": text}]
+                        )
 
-                    # Obtener respuesta IA
-                    reply = ai_response(text)
+                        reply = completion.choices[0].message.content
+                        send_message(sender_id, reply)
 
-                    # Enviar respuesta
-                    send_message(sender, reply)
+    return "OK", 200
 
-    return "ok", 200
-
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=10000)
