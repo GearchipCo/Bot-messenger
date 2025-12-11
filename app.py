@@ -1,67 +1,72 @@
+import os
 import requests
 from flask import Flask, request
+from openai import OpenAI
 
 app = Flask(__name__)
 
-# === CONFIGURACIÓN ===
-VERIFY_TOKEN = "3431172002" 
-PAGE_ACCESS_TOKEN = "EAALRZBMCczSoBQCmb5uPF57wart9Orhf8xUwXiIShpfusmkMqOuwnTZC7ZAwH3EBF44utiSZBA5eeq6JX9qOQn54BtR1cwJEdko4GdarhcfhJ3bYefaibWRFLC5P655cUJNpPvKgCuZBZCCQTmZC7ZAPNtsrBvJnOV24y9SHmfogGNzs4or5ZA0kHvNnx5GMVfq0yw2gQFAZDZD"  # cambia esto
+VERIFY_TOKEN = "3431172002"  # usa el que pusiste en Meta
 
-FB_API_URL = "https://graph.facebook.com/v17.0/me/messages"
+# Cargar claves desde las variables del servidor
+PAGE_ACCESS_TOKEN = os.getenv("PAGE_ACCESS_TOKEN")
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
+client = OpenAI(api_key=OPENAI_API_KEY)
 
-# === WEBHOOK ===
-@app.route('/webhook', methods=['GET', 'POST'])
-def webhook():
-    if request.method == 'GET':
-        mode = request.args.get('hub.mode')
-        token = request.args.get('hub.verify_token')
-        challenge = request.args.get('hub.challenge')
-
-        if mode == "subscribe" and token == VERIFY_TOKEN:
-            return challenge, 200
-        else:
-            return "Token inválido", 403
-
-    if request.method == 'POST':
-        data = request.json
-
-        print("Evento recibido:", data)
-
-        if "entry" in data:
-            for entry in data["entry"]:
-                if "messaging" in entry:
-                    for event in entry["messaging"]:
-                        if "message" in event:  # Mensaje normal
-                            sender_id = event["sender"]["id"]
-                            message_text = event["message"].get("text", "")
-
-                            enviar_mensaje(sender_id, f"Recibí tu mensaje: {message_text}")
-
-                        elif "postback" in event:  # Botón Get Started
-                            sender_id = event["sender"]["id"]
-                            enviar_mensaje(sender_id, "¡Hola! ¿En qué puedo ayudarte?")
-
-        return "EVENT_RECEIVED", 200
-
-
-# === FUNCIÓN PARA RESPONDER ===
-def enviar_mensaje(recipient_id, text):
-    payload = {
+def send_message(recipient_id, text):
+    url = "https://graph.facebook.com/v17.0/me/messages"
+    params = {"access_token": PAGE_ACCESS_TOKEN}
+    data = {
         "recipient": {"id": recipient_id},
         "message": {"text": text}
     }
-
-    params = {"access_token": PAGE_ACCESS_TOKEN}
-
-    response = requests.post(FB_API_URL, params=params, json=payload)
-
-    print("Respuesta envío:", response.text)
+    requests.post(url, params=params, json=data)
 
 
-@app.route('/')
-def home():
-    return "Bot funcionando correctamente", 200
+def ai_response(user_message):
+    try:
+        response = client.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=[
+                {"role": "system", "content": "Eres un asistente útil y amable."},
+                {"role": "user", "content": user_message}
+            ],
+            max_tokens=300
+        )
+        return response.choices[0].message.content
+    except Exception as e:
+        print("Error con OpenAI:", e)
+        return "Hubo un error procesando tu mensaje."
+
+
+@app.route('/webhook', methods=['GET'])
+def verify():
+    token = request.args.get('hub.verify_token')
+    challenge = request.args.get('hub.challenge')
+    if token == VERIFY_TOKEN:
+        return challenge
+    return "Token inválido", 403
+
+
+@app.route('/webhook', methods=['POST'])
+def webhook():
+    data = request.get_json()
+
+    if "entry" in data:
+        for entry in data["entry"]:
+            for event in entry.get("messaging", []):
+                sender = event["sender"]["id"]
+
+                if "message" in event and "text" in event["message"]:
+                    text = event["message"]["text"]
+
+                    # Obtener respuesta IA
+                    reply = ai_response(text)
+
+                    # Enviar respuesta
+                    send_message(sender, reply)
+
+    return "ok", 200
 
 
 if __name__ == '__main__':
