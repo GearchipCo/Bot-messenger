@@ -171,16 +171,5 @@
       "descuento": "30%",
       "requisitos": ["Prueba deportiva", "Compromiso con equipo", "Promedio 8.0"]
     }
-  ],
-
-  "faq": [
-    {
-      "pregunta": "¿Cuál es el costo total de una carrera?",
-      "respuesta": "Aproximadamente $200,000 MXN considerando colegiaturas, materiales y otros gastos."
-    },
-    {
-      "pregunta": "¿Hay educación en línea?",
-      "respuesta": "Actualmente todas las carreras son en modalidad escolarizada."
-    }
   ]
 }
