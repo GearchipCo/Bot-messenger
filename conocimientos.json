@@ -3,34 +3,37 @@
     "nombre": "Instituto Tecnológico Superior del Oriente del Estado de Hidalgo",
     "nombre_corto": "ITESA",
     "tipo": "Tecnológico de México",
-    "eslogan": "Por un Mexico tecnologicamente independiente",
+    "eslogan": "Por un México tecnológicamente independiente"
   },
 
   "contacto": {
     "telefonos": {
       "principal": "+52 748 912 4450",
-      "whatsapp": "+52 775 105 3988",
+      "whatsapp": "+52 775 105 3988"
     },
-
-  "extensiones": {
-    "departamentos": {
-      "vinculacion": "485",
-      "whatsapp": "486",
+    "extensiones": {
+      "departamentos": {
+        "vinculacion": "485",
+        "whatsapp": "486"
+      }
     },
     "correos": {
-      "general": "informes@utv.edu.mx",
-      "admisiones": "admisiones@utv.edu.mx",
-      "soporte": "soporte@utv.edu.mx",
-      "rectoria": "rector@utv.edu.mx"
+      "general": "informes@itesa.edu.mx",
+      "admisiones": "admisiones@itesa.edu.mx",
+      "soporte": "soporte@itesa.edu.mx",
+      "rectoria": "rector@itesa.edu.mx"
     },
     "direccion": {
-      "completa": "Avenida Tecnológico",
+      "completa": "Camino a San Miguel Regla s/n, Fraccionamiento el Tezontle, Ixmiquilpan, Hidalgo, C.P. 42300",
+      "municipio": "Ixmiquilpan",
+      "estado": "Hidalgo",
+      "pais": "México"
     },
     "redes_sociales": {
       "facebook": "https://www.facebook.com/ITESA.OFICIAL",
-      "instagram": "instagram.com/soyorgullo_itesa",
-      "tiktok": "tiktok.com/@orgullo_itesa",
-      "X": "ITESA_OFICIAL",
+      "instagram": "https://instagram.com/soyorgullo_itesa",
+      "tiktok": "https://tiktok.com/@orgullo_itesa",
+      "twitter": "https://twitter.com/ITESA_OFICIAL"
     },
     "sitio_web": "https://www.itesa.edu.mx/"
   },
@@ -38,6 +41,8 @@
   "horarios": {
     "administrativo": {
       "lunes_viernes": "08:00 - 18:00",
+      "sabado": "09:00 - 14:00",
+      "domingo": "Cerrado"
     },
     "clases": {
       "matutino": "07:00 - 14:00",
@@ -45,8 +50,12 @@
     },
     "biblioteca": {
       "lunes_viernes": "07:00 - 22:00",
+      "sabado": "09:00 - 14:00",
+      "domingo": "Cerrado"
     },
-    "cafeteria": "07:00 - 20:00 todos los días",
+    "cafeteria": {
+      "horario": "07:00 - 20:00 todos los días"
+    },
     "servicios_escolares": "08:30 - 16:30 lunes a viernes"
   },
 
@@ -71,7 +80,7 @@
         "Consultoría en TI",
         "Gobierno digital",
         "Emprendimiento tecnológico"
-      ],
+      ]
     },
     {
       "id": "la",
@@ -88,8 +97,7 @@
         "Recursos Humanos",
         "Comercio Internacional"
       ]
-    },
-    
+    }
   ],
 
   "admision": {
@@ -108,7 +116,7 @@
       "verano": {
         "inscripciones": "Marzo - Mayo",
         "clases": "Agosto"
-      },
+      }
     },
     "requisitos": {
       "documentos": [
@@ -145,7 +153,7 @@
       "creditos_extra": "$500.00 MXN por materia"
     },
     "formas_pago": [
-      "Transferencia bancaria BBVA: 1234 5678 9012 3456",
+      "Transferencia bancaria",
       "Tarjeta de crédito/débito",
       "Efectivo en caja",
       "Pago en línea a través del portal"
@@ -164,4 +172,15 @@
       "requisitos": ["Prueba deportiva", "Compromiso con equipo", "Promedio 8.0"]
     }
   ],
+
+  "faq": [
+    {
+      "pregunta": "¿Cuál es el costo total de una carrera?",
+      "respuesta": "Aproximadamente $200,000 MXN considerando colegiaturas, materiales y otros gastos."
+    },
+    {
+      "pregunta": "¿Hay educación en línea?",
+      "respuesta": "Actualmente todas las carreras son en modalidad escolarizada."
+    }
+  ]
 }
