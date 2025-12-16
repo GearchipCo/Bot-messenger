@@ -1,0 +1,167 @@
+{
+  "universidad": {
+    "nombre": "Instituto Tecnológico Superior del Oriente del Estado de Hidalgo",
+    "nombre_corto": "ITESA",
+    "tipo": "Tecnológico de México",
+    "eslogan": "Por un Mexico tecnologicamente independiente",
+  },
+
+  "contacto": {
+    "telefonos": {
+      "principal": "+52 748 912 4450",
+      "whatsapp": "+52 775 105 3988",
+    },
+
+  "extensiones": {
+    "departamentos": {
+      "vinculacion": "485",
+      "whatsapp": "486",
+    },
+    "correos": {
+      "general": "informes@utv.edu.mx",
+      "admisiones": "admisiones@utv.edu.mx",
+      "soporte": "soporte@utv.edu.mx",
+      "rectoria": "rector@utv.edu.mx"
+    },
+    "direccion": {
+      "completa": "Avenida Tecnológico",
+    },
+    "redes_sociales": {
+      "facebook": "https://www.facebook.com/ITESA.OFICIAL",
+      "instagram": "instagram.com/soyorgullo_itesa",
+      "tiktok": "tiktok.com/@orgullo_itesa",
+      "X": "ITESA_OFICIAL",
+    },
+    "sitio_web": "https://www.itesa.edu.mx/"
+  },
+
+  "horarios": {
+    "administrativo": {
+      "lunes_viernes": "08:00 - 18:00",
+    },
+    "clases": {
+      "matutino": "07:00 - 14:00",
+      "vespertino": "14:00 - 21:00"
+    },
+    "biblioteca": {
+      "lunes_viernes": "07:00 - 22:00",
+    },
+    "cafeteria": "07:00 - 20:00 todos los días",
+    "servicios_escolares": "08:30 - 16:30 lunes a viernes"
+  },
+
+  "carreras": [
+    {
+      "id": "isc",
+      "nombre": "Ingeniería en Sistemas Computacionales",
+      "abreviatura": "ISC",
+      "duracion": "4 años (8 semestres)",
+      "modalidad": "Escolarizada",
+      "turnos": ["Matutino", "Vespertino"],
+      "titulo": "Ingeniero en Sistemas Computacionales",
+      "descripcion": "Forma profesionales capaces de diseñar, desarrollar e implementar sistemas computacionales",
+      "perfil_egreso": [
+        "Desarrollador de software",
+        "Administrador de redes",
+        "Analista de sistemas",
+        "Especialista en ciberseguridad"
+      ],
+      "campo_laboral": [
+        "Empresas de tecnología",
+        "Consultoría en TI",
+        "Gobierno digital",
+        "Emprendimiento tecnológico"
+      ],
+    },
+    {
+      "id": "la",
+      "nombre": "Licenciatura en Administración",
+      "abreviatura": "LA",
+      "duracion": "4 años (8 semestres)",
+      "modalidad": "Escolarizada",
+      "turnos": ["Matutino", "Vespertino"],
+      "titulo": "Licenciado en Administración",
+      "descripcion": "Forma administradores capaces de dirigir organizaciones con enfoque estratégico",
+      "especialidades": [
+        "Marketing Digital",
+        "Finanzas Corporativas",
+        "Recursos Humanos",
+        "Comercio Internacional"
+      ]
+    },
+    
+  ],
+
+  "admision": {
+    "proceso": [
+      "1. Registro en línea en el portal de admisiones",
+      "2. Entrega de documentación requerida",
+      "3. Aplicación del examen de admisión",
+      "4. Publicación de resultados",
+      "5. Inscripción formal"
+    ],
+    "periodos": {
+      "primavera": {
+        "inscripciones": "Octubre - Diciembre",
+        "clases": "Enero"
+      },
+      "verano": {
+        "inscripciones": "Marzo - Mayo",
+        "clases": "Agosto"
+      },
+    },
+    "requisitos": {
+      "documentos": [
+        "Certificado de bachillerato (original y 2 copias)",
+        "Acta de nacimiento (original y 2 copias)",
+        "CURP (2 copias ampliadas)",
+        "6 fotografías tamaño infantil (blanco y negro)",
+        "Comprobante de domicilio (2 copias)",
+        "Certificado médico oficial",
+        "Identificación oficial (INE o pasaporte)"
+      ],
+      "academicos": [
+        "Promedio mínimo de 7.0",
+        "Certificado de bachillerato terminado"
+      ]
+    },
+    "examen": {
+      "costo": "$500.00 MXN",
+      "duracion": "3 horas",
+      "secciones": ["Matemáticas", "Español", "Ciencias", "Razonamiento"]
+    }
+  },
+
+  "costos": {
+    "inscripcion": "$2,500.00 MXN (pago único)",
+    "colegiatura_mensual": "$3,800.00 MXN",
+    "materiales": {
+      "semestral": "$1,500.00 MXN aproximadamente",
+      "libros": "$2,000.00 MXN por semestre (aprox)"
+    },
+    "otros": {
+      "titulacion": "$5,000.00 MXN",
+      "constancias": "$100.00 MXN c/u",
+      "creditos_extra": "$500.00 MXN por materia"
+    },
+    "formas_pago": [
+      "Transferencia bancaria BBVA: 1234 5678 9012 3456",
+      "Tarjeta de crédito/débito",
+      "Efectivo en caja",
+      "Pago en línea a través del portal"
+    ]
+  },
+
+  "becas": [
+    {
+      "nombre": "Excelencia Académica",
+      "descuento": "50%",
+      "requisitos": ["Promedio mínimo 9.0", "Carta de motivos", "Entrevista"]
+    },
+    {
+      "nombre": "Deportiva",
+      "descuento": "30%",
+      "requisitos": ["Prueba deportiva", "Compromiso con equipo", "Promedio 8.0"]
+    }
+  ],
+}
