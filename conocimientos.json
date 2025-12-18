@@ -140,25 +140,89 @@
     }
   },
 
-  "costos": {
-    "inscripcion": "$2,500.00 MXN (pago único)",
-    "colegiatura_mensual": "$3,800.00 MXN",
-    "materiales": {
-      "semestral": "$1,500.00 MXN aproximadamente",
-      "libros": "$2,000.00 MXN por semestre (aprox)"
+ "costos": {
+  "admision_ficha": {
+    "licenciatura": {
+      "monto": 615.00,
+      "moneda": "MXN"
     },
-    "otros": {
-      "titulacion": "$5,000.00 MXN",
-      "constancias": "$100.00 MXN c/u",
-      "creditos_extra": "$500.00 MXN por materia"
-    },
-    "formas_pago": [
-      "Transferencia bancaria",
-      "Tarjeta de crédito/débito",
-      "Efectivo en caja",
-      "Pago en línea a través del portal"
-    ]
+    "posgrado": {
+      "monto": 884.00,
+      "moneda": "MXN"
+    }
   },
+
+  "inscripcion_nuevo_ingreso": {
+    "licenciatura": {
+      "monto": 3466.00,
+      "moneda": "MXN",
+      "incluye": [
+        "Seguro contra accidentes",
+        "Idioma inglés"
+      ]
+    },
+    "posgrado": {
+      "monto": 7620.00,
+      "moneda": "MXN",
+      "incluye": [
+        "Seguro contra accidentes"
+      ]
+    }
+  },
+
+  "reinscripcion": {
+    "licenciatura": {
+      "monto": 2374.00,
+      "moneda": "MXN",
+      "incluye": [
+        "Seguro contra accidentes",
+        "Idioma inglés"
+      ]
+    },
+    "posgrado": {
+      "monto": 7321.00,
+      "moneda": "MXN",
+      "incluye": [
+        "Seguro contra accidentes"
+      ]
+    }
+  },
+
+  "titulacion": {
+    "licenciatura": {
+      "monto": 2456.00,
+      "moneda": "MXN",
+      "incluye": [
+        "Certificado de estudios",
+        "Protocolo de titulación",
+        "Título profesional",
+        "Registro profesional estatal",
+        "Validación electrónica",
+        "Credencial de egresado"
+      ]
+    },
+    "posgrado": {
+      "monto": 3314.00,
+      "moneda": "MXN",
+      "incluye": [
+        "Certificado de estudios",
+        "Protocolo de titulación posgrado",
+        "Título profesional",
+        "Registro profesional estatal",
+        "Validación electrónica",
+        "Credencial de egresado"
+      ]
+    }
+  },
+
+  "formas_pago": [
+    "Transferencia bancaria",
+    "Tarjeta de crédito/débito",
+    "Efectivo en caja",
+    "Pago en línea a través del portal"
+  ]
+}
+
 
   "becas": [
     {
